@@ -1,3 +1,5 @@
+import os.path
+
 import pygame
 from src.Const import *
 from src.Level import Level
@@ -8,7 +10,6 @@ class Game:
     def __init__(self):
         pygame.init()
         self.window = pygame.display.set_mode(size=(LARGURA, ALTURA))
-
     def run(self):
         relogio = pygame.time.Clock()
         while True:

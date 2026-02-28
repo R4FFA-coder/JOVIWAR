@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+from src.Const import BGML2
 from src.Entity import Entity
 from src.EntityFactory import EntityFactory
 from src.Player import Player
@@ -15,10 +16,13 @@ class Level:
         self.entity_list.extend(EntityFactory.get_entity('Level1'))
 
     def run(self, ):
+        pygame.mixer_music.load(BGML2)
+        pygame.mixer_music.play(-1, fade_ms=1500)
+        pygame.mixer_music.set_volume(0.45)
         clock = pygame.time.Clock()
         todas_as_sprites = pygame.sprite.Group()
         player = Player()
-        todas_as_sprites  = player
+        todas_as_sprites.add(player)
 
         while True:
             clock.tick(30)

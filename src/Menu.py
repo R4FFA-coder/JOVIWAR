@@ -13,7 +13,7 @@ class Menu:
         menu_option = 0
         pygame.display.set_caption('JOVIWAR 0.1')
         pygame.mixer_music.load(BGM)  # Metodo para carregar musica
-        pygame.mixer_music.play(-1)  # metodo que coloca a musica em loop
+        pygame.mixer_music.play(-1, fade_ms=1000)  # metodo que coloca a musica em loop
         self.window.blit(self.surf, self.rect)
         self.menu_texto(80, 'JOVI', WHITE, (LARGURA // 2 - 30, 127))
         self.menu_texto(55, 'WAR', BLUE, (LARGURA // 2 + 60, 179))
@@ -32,6 +32,9 @@ class Menu:
                     pygame.quit()
                     exit()
                 if event.type == KEYDOWN:
+                    if event.key == K_ESCAPE:
+                        pygame.quit()
+                        exit()
                     if event.key == K_DOWN:
                         if menu_option < len(MENU_OPTION) - 1:
                             menu_option += 1
