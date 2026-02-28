@@ -1,5 +1,6 @@
 import pygame
 from src.Const import *
+from src.Level import Level
 from src.Menu import Menu
 from sys import exit
 
@@ -15,7 +16,8 @@ class Game:
             menu = Menu(self.window)
             menu_return = menu.run()
             if menu_return in [MENU_OPTION[0]]:
-                pass
+                level = Level(self.window, 'Level1', menu_return)
+                level_return = level.run()
             elif menu_return in [MENU_OPTION[1]]:
                 pass
             elif menu_return in [MENU_OPTION[2]]:

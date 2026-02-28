@@ -1,6 +1,11 @@
 # Parametros padrao
 
-
+# BACKGROUND_CONFIG
+BACKGROUND_SPEED = {'Level1_1' : 0,
+                    'Level1_2' : 1,
+                    'Level1_3' : 2,
+                    'Level1_4' : 3,
+                    'Level1_5' : 4,}
 # COLOR
 WHITE = (255,255,255)
 BLACK = (0,0,0)
