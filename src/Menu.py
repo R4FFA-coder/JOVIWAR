@@ -6,7 +6,7 @@ from src.Const import *
 class Menu:
     def __init__(self, window):
         self.window = window
-        self.surf = pygame.image.load(BGD)
+        self.surf = pygame.image.load(BGD).convert_alpha()
         self.rect = self.surf.get_rect()
 
     def run(self):
