@@ -1,5 +1,7 @@
+from random import randint
 from src.Background import Background
-from src.Const import LARGURA
+from src.Const import LARGURA, ALTURA
+from src.Enemy import Enemy
 from src.Platform import Platform
 
 
@@ -14,3 +16,5 @@ class EntityFactory:
                     list_bg.append(Background(f'Level1_{i}', (0, 0)))
                     list_bg.append(Background(f'Level1_{i}', (LARGURA, 0)))
                 return list_bg
+            case 'Enemy':
+                return Enemy('Drone', (LARGURA + LARGURA, ALTURA - 52))

@@ -1,17 +1,32 @@
+from random import randint
 import pygame
-
 from src.Const import WHITE, LARGURA, ALTURA
 
+class Platform(pygame.sprite.Sprite):
+    count_platform = 0
+    current_y = ALTURA - 70
+    def __init__(self, pos_x: int):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load('./assets/Plataforma2-1.png')
+        self.image = pygame.transform.scale(self.image, (48 * 2 + 4, 48 * 2 + 4))
+        self.rect = self.image.get_rect()
+        self.rect.y = ALTURA - 70
+        self.rect.x = pos_x * 100
 
-class Platform:
-    def __init__(self, pos_X: int):
-        self.surf = pygame.image.load('./assets/Plataforma1.png')
-        self.rect = self.surf.get_rect()
-        self.rect.y = ALTURA - 80
-        self.rect.x = pos_X * 128
-
-    def move(self):
-        if self.rect.topright[0] < 0:
-            self.rect.x = LARGURA
+    def update(self):
         self.rect.x -= 10
+        if self.rect.right < 0:
+            self.rect.left = LARGURA
+            Platform.count_platform += 1
 
+            # MEUS PLANOS ORIGINAL ERA TER UM SISTEMA DE PLATAFORMA COM ALTURA VARIADA PARA DAR UMA DIFICULDADE
+            # POREM AINDA ESTOU APRENDENDO A LÓGICA PARA FAZER O SISTEMA DE COLISÃO, NÃO DESISTI, FUTURAMENTE
+            # FAREI DO JEITO QUE EU SEMPRE PRETENDI
+
+            # if Platform.count_platform % 10 == 0:
+            #     if Platform.count_platform > 5:
+            #         Platform.current_y = randint(350, ALTURA - 50)
+            #     else:
+            #         Platform.current_y = ALTURA - 70
+
+            # self.rect.y = Platform.current_y

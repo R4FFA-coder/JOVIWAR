@@ -1,16 +1,20 @@
 # Parametros padrao
+import pygame
 
-# BACKGROUND_CONFIG
-BACKGROUND_SPEED = {'Level1_1' : 0,
-                    'Level1_2' : 1,
-                    'Level1_3' : 2,
-                    'Level1_4' : 3,
-                    'Level1_5' : 4,}
+# ENTITY_CONFIG
+EVENT_ENEMY = pygame.USEREVENT = 1
+
+ENTITY_SPEED = {'Level1_1': 0,
+                'Level1_2': 1,
+                'Level1_3': 2,
+                'Level1_4': 3,
+                'Level1_5': 4,
+                'Drone': 6}
 # COLOR
-WHITE = (255,255,255)
-BLACK = (0,0,0)
-YELLOW = (255,255,0)
-BLUE = (0,0,255)
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+YELLOW = (255, 255, 0)
+BLUE = (0, 0, 255)
 
 # FONT
 FONT_PATH = './font/FutureMillennium.ttf'

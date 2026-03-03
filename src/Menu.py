@@ -3,6 +3,7 @@ from sys import *
 from pygame.locals import *
 from src.Const import *
 
+
 class Menu:
     def __init__(self, window):
         self.window = window
@@ -15,16 +16,18 @@ class Menu:
         pygame.mixer_music.load(BGM)  # Metodo para carregar musica
         pygame.mixer_music.play(-1, fade_ms=1000)  # metodo que coloca a musica em loop
         self.window.blit(self.surf, self.rect)
-        self.menu_texto(80, 'JOVI', WHITE, (LARGURA // 2 - 30, 127))
-        self.menu_texto(55, 'WAR', BLUE, (LARGURA // 2 + 60, 179))
+        self.menu_texto(80, 'JOVI', WHITE, (LARGURA // 2 - 30, 127), None)
+        self.menu_texto(55, 'WAR', BLUE, (LARGURA // 2 + 60, 179), None)
         self.instrucoes(20, (LARGURA - 200, 450))
+        self.menu_texto(15, 'JOGO CRIADO POR RAFAEL REIS!     versão demonstracão', WHITE, (LARGURA - 250, ALTURA - 17),
+                        BLACK)
 
         while True:
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_texto(30, MENU_OPTION[i], BLUE, (255 - i * 19, 300 + 40 * i))
+                    self.menu_texto(30, MENU_OPTION[i], BLUE, (255 - i * 19, 300 + 40 * i), None)
                 else:
-                    self.menu_texto(30, MENU_OPTION[i], BLACK, (255 - i * 19, 300 + 40 * i))
+                    self.menu_texto(30, MENU_OPTION[i], BLACK, (255 - i * 19, 300 + 40 * i), None)
             pygame.display.flip()
 
             for event in pygame.event.get():
@@ -48,15 +51,14 @@ class Menu:
                     if event.key == K_RETURN:
                         return MENU_OPTION[menu_option]
 
-
-
-    def menu_texto(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
+    def menu_texto(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple, BackgroundColor):
         """Metodo que cria texto para o menu
             A Logica é a mesma de criar uma imagem de fundo, um texto sera como uma imagem projetada em um retangulo que criaremos
         """
         text_font = pygame.font.Font(FONT_PATH, size=text_size)  # padroniza uma fonte e o tamanho
-        text_surf = text_font.render(text, True, text_color).convert_alpha()  # Renderiza o texto
-        text_rect = text_surf.get_rect(center=text_center_pos)  # Desenha um retangulo que será a área em que o texto ocupará
+        text_surf = text_font.render(text, True, text_color, BackgroundColor).convert_alpha()  # Renderiza o texto
+        text_rect = text_surf.get_rect(
+            center=text_center_pos)  # Desenha um retangulo que será a área em que o texto ocupará
         self.window.blit(source=text_surf, dest=text_rect)  # carrega o texto e imprime na area do retangulo
 
     def instrucoes(self, text_size: int, text_center_pos: tuple):
