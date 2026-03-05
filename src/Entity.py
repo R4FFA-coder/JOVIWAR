@@ -5,8 +5,9 @@ import pygame.image
 from src.Const import ENTITY_HEALTH
 
 
-class Entity(ABC):
+class Entity(ABC, pygame.sprite.Sprite):
     def __init__(self, name: str, position: tuple):
+        pygame.sprite.Sprite.__init__(self)
         self.name = name
         self.surf = pygame.image.load('./assets/' + name + '.png').convert_alpha()
         self.rect = self.surf.get_rect(left= position[0], top= position[1])
@@ -14,5 +15,5 @@ class Entity(ABC):
         self.health = ENTITY_HEALTH[self.name]
 
     @abstractmethod
-    def move(self, ):
+    def move(self):
         pass

@@ -1,8 +1,10 @@
 import pygame
-from src.Const import ALTURA
+from src.Const import ALTURA, ENTITY_HEALTH
+from src.Entity import Entity
+from src.PlayerShot import PlayerShot
 
 
-class Player(pygame.sprite.Sprite):
+class Player(Entity):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.images_player_run = []
@@ -27,6 +29,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.midbottom = (100, self.pos_y_inicial + (self.image.get_height() // 2))
         self.frames = 0
         self.max_frames = 1
+        self.surf = self.image
+        self.health = 200
 
     def update(self):
         if self.pulo:
@@ -48,6 +52,7 @@ class Player(pygame.sprite.Sprite):
             self.current += 1
         if self.current > len(atual_list) - 1:
             self.current = 0
+        self.surf = self.image
 
         pos_antiga = self.rect.midbottom
         self.image = atual_list[self.current]
@@ -58,4 +63,8 @@ class Player(pygame.sprite.Sprite):
         self.current = 0
 
     def atirar(self):
+        print('Atirando')
+        return PlayerShot('PlayerShot', (self.rect.right - 15, self.rect.y + 35))
+
+    def move(self):
         pass

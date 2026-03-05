@@ -3,8 +3,6 @@ import pygame
 from src.Const import WHITE, LARGURA, ALTURA
 
 class Platform(pygame.sprite.Sprite):
-    count_platform = 0
-    current_y = ALTURA - 70
     def __init__(self, pos_x: int):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('./assets/Plataforma2-1.png')
@@ -17,7 +15,6 @@ class Platform(pygame.sprite.Sprite):
         self.rect.x -= 10
         if self.rect.right < 0:
             self.rect.left = LARGURA
-            Platform.count_platform += 1
 
             # MEUS PLANOS ORIGINAL ERA TER UM SISTEMA DE PLATAFORMA COM ALTURA VARIADA PARA DAR UMA DIFICULDADE
             # POREM AINDA ESTOU APRENDENDO A LÓGICA PARA FAZER O SISTEMA DE COLISÃO, NÃO DESISTI, FUTURAMENTE
