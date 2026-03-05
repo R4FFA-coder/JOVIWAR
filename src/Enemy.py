@@ -10,5 +10,5 @@ class Enemy(Entity):
 
     def move(self, ):
         self.rect.centerx -= ENTITY_SPEED[self.name]
-        if self.rect.right <=0:
-            self.rect.left = LARGURA + randint(10,LARGURA)
+        # if self.rect.right < 0:
+        #     self.rect.left = LARGURA + randint(40,LARGURA - 40)

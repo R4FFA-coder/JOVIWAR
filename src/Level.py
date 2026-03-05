@@ -4,6 +4,7 @@ from pygame.locals import *
 from src.Const import *
 from src.Entity import Entity
 from src.EntityFactory import EntityFactory
+from src.EntityMediator import EntityMediator
 from src.Menu import Menu
 from src.Platform import Platform
 from src.Player import Player
@@ -16,7 +17,7 @@ class Level:
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1'))
 
-        pygame.time.set_timer(EVENT_ENEMY, 8000)
+        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIMER)
         self.entity_list.append(EntityFactory.get_entity('Enemy'))
 
     def run(self, ):
@@ -35,6 +36,7 @@ class Level:
             todas_as_sprites.add(chao)
 
         todas_as_sprites.add(player)
+
         while True:
             clock.tick(30)
             for ent in self.entity_list:
@@ -47,10 +49,11 @@ class Level:
 
             pygame.display.flip()
 
+
             for event in pygame.event.get():
                 if event.type == EVENT_ENEMY:
-                    if len(self.entity_list) > 12:
-                        continue
+                    # if len(self.entity_list) > 12: # Criei uma condição para limitar o numero de objetos Enemy criados (Poupar recursos)
+                    #     continue
                     self.entity_list.append(EntityFactory.get_entity('Enemy'))
                 if event.type == QUIT:
                     pygame.quit()
@@ -70,6 +73,9 @@ class Level:
                         print('ATIRANDO!')
                         # player.atirar()
 
+            # verificar colisoes e a vida
+            EntityMediator.verify_collision(entity_list=self.entity_list)
+            EntityMediator.verify_health(entity_list=self.entity_list)
 
 
     def text_level(self, text: str, size: int, text_center_pos: tuple):

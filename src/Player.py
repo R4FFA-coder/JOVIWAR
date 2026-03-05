@@ -31,11 +31,11 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         if self.pulo:
             self.rect.y -= 20
-            if self.rect.y <= 300:
+            if self.rect.y <= 320:
                 self.pulo = False
         else:
             if self.rect.y < self.pos_y_inicial:
-                self.rect.y += 20
+                self.rect.y += 17
             else:
                 self.rect.y = self.pos_y_inicial
         if self.rect.y < self.pos_y_inicial:

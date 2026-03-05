@@ -4,6 +4,14 @@ import pygame
 # ENTITY_CONFIG
 EVENT_ENEMY = pygame.USEREVENT = 1
 
+ENTITY_HEALTH = {'Level1_1': 999,
+                 'Level1_2': 999,
+                 'Level1_3': 999,
+                 'Level1_4': 999,
+                 'Level1_5': 999,
+                 'Drone': 40,
+                 'Player': 200}
+
 ENTITY_SPEED = {'Level1_1': 0,
                 'Level1_2': 1,
                 'Level1_3': 2,
@@ -33,6 +41,9 @@ BGML1 = './assets/Samba.wav'
 BGML2 = './assets/Labirinto.wav'
 SCORE = './assets/Score.wav'
 SHOOT = './assets/Shoot.wav'
+
+# SPAWN TIMER
+SPAWN_TIMER = 2000
 
 # WINDOW
 LARGURA = 800
