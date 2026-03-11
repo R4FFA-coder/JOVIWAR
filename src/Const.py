@@ -3,18 +3,25 @@ import pygame
 from pygame.constants import K_LCTRL, K_RCTRL
 
 # ENTITY_CONFIG
-PLAYER_KEY_SHOT = {'Player': pygame.K_LCTRL,
-                   'Player2': K_RCTRL}
-
 EVENT_ENEMY = pygame.USEREVENT = 1
+
+ENTITY_DAMAGE = {'Level1_1': 0,
+                 'Level1_2': 0,
+                 'Level1_3': 0,
+                 'Level1_4': 0,
+                 'Level1_5': 0,
+                 'Drone': 1,
+                 'Player1': 1,
+                 'PlayerShot': 20,
+                 'EnemyShot': 20}
 
 ENTITY_HEALTH = {'Level1_1': 999,
                  'Level1_2': 999,
                  'Level1_3': 999,
                  'Level1_4': 999,
                  'Level1_5': 999,
-                 'Drone': 40,
                  'Player1': 200,
+                 'Drone': 40,
                  'PlayerShot': 1,
                  'EnemyShot': 1}
 

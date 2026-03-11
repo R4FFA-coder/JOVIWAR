@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 import pygame.image
 
-from src.Const import ENTITY_HEALTH
+from src.Const import ENTITY_HEALTH, ENTITY_DAMAGE
 
 
 class Entity(ABC, pygame.sprite.Sprite):
@@ -13,6 +13,8 @@ class Entity(ABC, pygame.sprite.Sprite):
         self.rect = self.surf.get_rect(left= position[0], top= position[1])
         self.speed = 0
         self.health = ENTITY_HEALTH[self.name]
+        self.damage = ENTITY_DAMAGE[self.name]
+        self.last_dmg = 'None'
 
     @abstractmethod
     def move(self):
