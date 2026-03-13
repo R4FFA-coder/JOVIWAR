@@ -31,7 +31,6 @@ class Level:
         pygame.time.set_timer(countdown_timer, 1000)
         todas_as_sprites = pygame.sprite.Group()
 
-
         for i in range(LARGURA // 100 + 2):
             chao = Platform(i)
             todas_as_sprites.add(chao)
@@ -51,11 +50,11 @@ class Level:
             todas_as_sprites.draw(self.window)
             todas_as_sprites.update()
             self.text_level(f'Timeout= {countdown}', 20, (100, 30))
-            self.text_level(f'Entitys = {len(self.entity_list)}', 20, (LARGURA //2, 30))
-            self.text_level(f'FPS: {clock.get_fps()}', 12, (LARGURA - 100, 20))
+            self.text_level(f'Entitys = {len(self.entity_list)}', 20, (LARGURA // 2, 30))
+            self.text_level(f'FPS: {clock.get_time()}', 12, (LARGURA - 100, 20))
+            self.text_level2(f'player health: {self.player.health}', 20, (100, 60))
 
             pygame.display.flip()
-
 
             for event in pygame.event.get():
                 if event.type == EVENT_ENEMY:
@@ -78,15 +77,23 @@ class Level:
                         if event.key == K_RCTRL or event.key == K_LCTRL:
                             player_shot = self.player.atirar()
                             self.entity_list.append(player_shot)
-
+            if self.player.health <= 0:
+                print('VOCE MORREU')
+                break
 
             # verificar colisoes e a vida
             EntityMediator.verify_collision(entity_list=self.entity_list)
             EntityMediator.verify_health(entity_list=self.entity_list)
 
-
     def text_level(self, text: str, size: int, text_center_pos: tuple):
         text_font = pygame.font.Font(FONT_PATH_ITALLIC, size=size)  # padroniza uma fonte e o tamanho
         text_surf = text_font.render(text, True, WHITE).convert_alpha()  # Renderiza o texto
-        text_rect = text_surf.get_rect(center=text_center_pos)  # Desenha um retangulo que será a área em que o texto ocupará
+        text_rect = text_surf.get_rect(
+            center=text_center_pos)  # Desenha um retangulo que será a área em que o texto ocupará
         self.window.blit(source=text_surf, dest=text_rect)  # carrega o texto e imprime na area do retangulo
+
+    def text_level2(self, text: str, size: int, text_center_pos: tuple):
+        text_font = pygame.font.Font(FONT_PATH_BOLD, size=size)
+        text_surf = text_font.render(text, True, ORANGE).convert_alpha()
+        text_rect = text_surf.get_rect(center=text_center_pos)
+        self.window.blit(source=text_surf, dest=text_rect)

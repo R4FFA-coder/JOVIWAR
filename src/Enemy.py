@@ -1,8 +1,6 @@
 from src.Const import *
 from src.EnemyShot import EnemyShot
 from src.Entity import Entity
-from src.PlayerShot import PlayerShot
-
 
 class Enemy(Entity):
     def __init__(self, name: str, position: tuple):
@@ -18,4 +16,4 @@ class Enemy(Entity):
         self.shot_delay -= 1
         if self.shot_delay <= 0:
             self.shot_delay = 100
-            return EnemyShot('EnemyShot', (self.rect.centerx, self.rect.centery - 16))
+            return EnemyShot('EnemyShot', (self.rect.centerx, self.rect.centery - 5))

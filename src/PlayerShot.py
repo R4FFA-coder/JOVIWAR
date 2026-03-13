@@ -1,5 +1,4 @@
 import pygame.transform
-
 from src.Const import ENTITY_SPEED
 from src.Entity import Entity
 

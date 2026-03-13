@@ -1,7 +1,5 @@
 # Parametros padrao
 import pygame
-from pygame.constants import K_LCTRL, K_RCTRL
-
 # ENTITY_CONFIG
 EVENT_ENEMY = pygame.USEREVENT = 1
 
@@ -12,16 +10,16 @@ ENTITY_DAMAGE = {'Level1_1': 0,
                  'Level1_5': 0,
                  'Drone': 1,
                  'Player1': 1,
-                 'PlayerShot': 20,
-                 'EnemyShot': 20}
+                 'PlayerShot': 1,
+                 'EnemyShot': 1}
 
 ENTITY_HEALTH = {'Level1_1': 999,
                  'Level1_2': 999,
                  'Level1_3': 999,
                  'Level1_4': 999,
                  'Level1_5': 999,
-                 'Player1': 200,
-                 'Drone': 40,
+                 'Player1': 4,
+                 'Drone': 10,
                  'PlayerShot': 1,
                  'EnemyShot': 1}
 
@@ -30,15 +28,18 @@ ENTITY_SPEED = {'Level1_1': 0,
                 'Level1_3': 2,
                 'Level1_4': 3,
                 'Level1_5': 4,
-                'Drone': 5,
+                'Drone': 3,
                 'Player1': 0,
                 'PlayerShot': 20,
-                'EnemyShot': 9}
+                'EnemyShot': 8}
 # COLOR
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
 BLUE = (0, 0, 255)
+GREEN = (0,255,0)
+SILVER = (192,192,192)
+ORANGE = (255,148,0)
 
 # FONT
 FONT_PATH = './font/FutureMillennium.ttf'

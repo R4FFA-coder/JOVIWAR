@@ -2,8 +2,6 @@ from random import randint
 from src.Background import Background
 from src.Const import LARGURA, ALTURA
 from src.Enemy import Enemy
-from src.Platform import Platform
-
 
 class EntityFactory:
 

@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
-
 import pygame.image
-
 from src.Const import ENTITY_HEALTH, ENTITY_DAMAGE
 
 
