@@ -49,9 +49,11 @@ class Level:
 
             todas_as_sprites.draw(self.window)
             todas_as_sprites.update()
+
             self.text_level(f'Timeout= {countdown}', 20, (100, 30))
             self.text_level(f'Entitys = {len(self.entity_list)}', 20, (LARGURA // 2, 30))
-            self.text_level(f'FPS: {clock.get_time()}', 12, (LARGURA - 100, 20))
+            self.text_level(f'FPS: {clock.get_fps():.0f}', 12, (LARGURA - 100, 20))
+            self.text_level(f'SCORE: {self.player.score}', 20, (LARGURA - 100, 40))
             self.text_level2(f'player health: {self.player.health}', 20, (100, 60))
 
             pygame.display.flip()

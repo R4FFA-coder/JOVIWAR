@@ -31,15 +31,16 @@ class Player(Entity):
         self.surf = self.image
         self.health = 5
         self.damage = 1
+        self.score = 0
 
     def update(self):
         if self.pulo:
-            self.rect.y -= 25
-            if self.rect.y <= 250:
+            self.rect.y -= 21
+            if self.rect.y <= 320:
                 self.pulo = False
         else:
             if self.rect.y < self.pos_y_inicial:
-                self.rect.y += 17
+                self.rect.y += 13
             else:
                 self.rect.y = self.pos_y_inicial
         if self.rect.y < self.pos_y_inicial:
@@ -63,7 +64,6 @@ class Player(Entity):
         self.current = 0
 
     def atirar(self):
-        print('Atirando')
         return PlayerShot('PlayerShot', (self.rect.right - 15, self.rect.y + 35))
 
     def move(self):

@@ -15,4 +15,4 @@ class EntityFactory:
                     list_bg.append(Background(f'Level1_{i}', (LARGURA, 0)))
                 return list_bg
             case 'Enemy':
-                return Enemy('Drone', (LARGURA + randint(20, LARGURA), ALTURA - 85))
+                return Enemy('Drone', (LARGURA + randint(20, LARGURA), ALTURA - 80))

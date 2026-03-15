@@ -1,3 +1,4 @@
+from random import randint
 from src.Const import *
 from src.EnemyShot import EnemyShot
 from src.Entity import Entity
@@ -15,5 +16,5 @@ class Enemy(Entity):
     def atirar(self):
         self.shot_delay -= 1
         if self.shot_delay <= 0:
-            self.shot_delay = 100
+            self.shot_delay = randint(200,300)
             return EnemyShot('EnemyShot', (self.rect.centerx, self.rect.centery - 5))

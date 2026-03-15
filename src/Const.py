@@ -18,10 +18,20 @@ ENTITY_HEALTH = {'Level1_1': 999,
                  'Level1_3': 999,
                  'Level1_4': 999,
                  'Level1_5': 999,
-                 'Player1': 4,
+                 'Player1': 6,
                  'Drone': 10,
                  'PlayerShot': 1,
                  'EnemyShot': 1}
+
+ENTITY_SCORE = {'Level1_1': 0,
+                 'Level1_2': 0,
+                 'Level1_3': 0,
+                 'Level1_4': 0,
+                 'Level1_5': 0,
+                 'Drone': 5,
+                 'Player1': 0,
+                 'PlayerShot': 0,
+                 'EnemyShot': 0}
 
 ENTITY_SPEED = {'Level1_1': 0,
                 'Level1_2': 1,
@@ -31,7 +41,7 @@ ENTITY_SPEED = {'Level1_1': 0,
                 'Drone': 3,
                 'Player1': 0,
                 'PlayerShot': 20,
-                'EnemyShot': 8}
+                'EnemyShot': 11}
 # COLOR
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
