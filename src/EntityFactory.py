@@ -8,7 +8,7 @@ class EntityFactory:
     @staticmethod
     def get_entity(entity_name: str, position=(0,0)):
         match entity_name:
-            case 'Level1':
+            case 'Level1' | 'Level_infinite':
                 list_bg = []
                 for i in range(1,6):
                     list_bg.append(Background(f'Level1_{i}', (0, 0)))

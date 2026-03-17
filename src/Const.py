@@ -19,7 +19,7 @@ ENTITY_HEALTH = {'Level1_1': 999,
                  'Level1_4': 999,
                  'Level1_5': 999,
                  'Player1': 6,
-                 'Drone': 10,
+                 'Drone': 7,
                  'PlayerShot': 1,
                  'EnemyShot': 1}
 
@@ -57,9 +57,10 @@ FONT_PATH_ITALLIC = './font/FutureMillennium Italic.ttf'
 FONT_PATH_BOLD = './font/FutureMillennium Black.ttf'
 
 # MENU OPTION
-MENU_OPTION = ('NOVO JOGO',
+MENU_OPTION = ('JOGAR            ',
+               ' MODO LIVRE',
                'RANKING',
-               'SAIR')
+               'SAIR  ')
 
 # PATHS
 BGD = './assets/MenuBG.jpg'

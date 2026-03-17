@@ -19,7 +19,7 @@ class Menu:
         self.menu_texto(80, 'JOVI', WHITE, (LARGURA // 2 - 30, 127), None)
         self.menu_texto(55, 'WAR', BLUE, (LARGURA // 2 + 60, 179), None)
         self.instrucoes(20, (LARGURA - 200, 450))
-        self.menu_texto(15, 'JOGO CRIADO POR RAFAEL REIS!     versão demonstracão', WHITE, (LARGURA - 250, ALTURA - 17),
+        self.menu_texto(15, 'JOGO CRIADO POR RAFAEL REIS!     versão: 0.10', WHITE, (LARGURA - 250, ALTURA - 17),
                         BLACK)
 
         while True:

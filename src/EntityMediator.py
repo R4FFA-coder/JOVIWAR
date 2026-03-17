@@ -1,4 +1,5 @@
-from src.Const import LARGURA
+import pygame.mixer_music
+from src.Const import LARGURA, SCORE
 from src.Enemy import Enemy
 from src.EnemyShot import EnemyShot
 from src.Entity import Entity
@@ -46,6 +47,12 @@ class EntityMediator:
             for ent in entity_list:
                 if ent.name == 'Player':
                     ent.score += enemy.score
+                    pygame.mixer.Sound(SCORE).play().set_volume(0.3)
+                    num = 25
+                    if ent.score == num : # Condição para implementar uma vida adicional ao matar 5 enemies
+                        ent.health += 1   # Apenas para balançear a dificuldade
+                        num += 25
+
 
     @staticmethod
     def verify_collision(entity_list: list[Entity]):
