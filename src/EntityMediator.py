@@ -45,7 +45,7 @@ class EntityMediator:
     def __give_score(enemy: Enemy, entity_list: list[Entity]):
         if enemy.last_dmg == 'PlayerShot':
             for ent in entity_list:
-                if ent.name == 'Player':
+                if ent.name == 'Player1':
                     ent.score += enemy.score
                     pygame.mixer.Sound(SCORE).play().set_volume(0.3)
                     num = 25

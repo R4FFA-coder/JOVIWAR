@@ -1,4 +1,3 @@
-import pygame
 from sys import *
 from pygame.locals import *
 from src.Const import *
@@ -12,12 +11,12 @@ class Menu:
 
     def run(self):
         menu_option = 0
-        pygame.display.set_caption('JOVIWAR 0.1')
+        pygame.display.set_caption('JOVIWAR 0.10')
         pygame.mixer_music.load(BGM)  # Metodo para carregar musica
         pygame.mixer_music.play(-1, fade_ms=1000)  # metodo que coloca a musica em loop
         self.window.blit(self.surf, self.rect)
-        self.menu_texto(80, 'JOVI', WHITE, (LARGURA // 2 - 30, 127), None)
-        self.menu_texto(55, 'WAR', BLUE, (LARGURA // 2 + 60, 179), None)
+        self.menu_texto(80, 'JOVI', WHITE, (LARGURA // 2 - 30, 127))
+        self.menu_texto(55, 'WAR', BLUE, (LARGURA // 2 + 60, 179))
         self.instrucoes(20, (LARGURA - 200, 450))
         self.menu_texto(15, 'JOGO CRIADO POR RAFAEL REIS!     versão: 0.10', WHITE, (LARGURA - 250, ALTURA - 17),
                         BLACK)
@@ -25,9 +24,9 @@ class Menu:
         while True:
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_texto(30, MENU_OPTION[i], BLUE, (255 - i * 19, 300 + 40 * i), None)
+                    self.menu_texto(30, MENU_OPTION[i], ORANGE, (255 - i * 19, 300 + 40 * i))
                 else:
-                    self.menu_texto(30, MENU_OPTION[i], BLACK, (255 - i * 19, 300 + 40 * i), None)
+                    self.menu_texto(30, MENU_OPTION[i], BLUE, (255 - i * 19, 300 + 40 * i), WHITE)
             pygame.display.flip()
 
             for event in pygame.event.get():
@@ -51,9 +50,9 @@ class Menu:
                     if event.key == K_RETURN:
                         return MENU_OPTION[menu_option]
 
-    def menu_texto(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple, BackgroundColor):
-        """Metodo que cria texto para o menu
-            A Logica é a mesma de criar uma imagem de fundo, um texto sera como uma imagem projetada em um retangulo que criaremos
+    def menu_texto(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple, BackgroundColor=None):
+        """Método que cria texto para o menu
+            A Lógica é a mesma de criar uma imagem de fundo, um texto sera como uma imagem projetada em um retangulo que criaremos
         """
         text_font = pygame.font.Font(FONT_PATH, size=text_size)  # padroniza uma fonte e o tamanho
         text_surf = text_font.render(text, True, text_color, BackgroundColor).convert_alpha()  # Renderiza o texto

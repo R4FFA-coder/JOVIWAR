@@ -1,5 +1,6 @@
 # Parametros padrao
 import pygame
+
 # ENTITY_CONFIG
 EVENT_ENEMY = pygame.USEREVENT = 1
 
@@ -18,20 +19,20 @@ ENTITY_HEALTH = {'Level1_1': 999,
                  'Level1_3': 999,
                  'Level1_4': 999,
                  'Level1_5': 999,
-                 'Player1': 6,
+                 'Player1': 2,
                  'Drone': 7,
                  'PlayerShot': 1,
                  'EnemyShot': 1}
 
 ENTITY_SCORE = {'Level1_1': 0,
-                 'Level1_2': 0,
-                 'Level1_3': 0,
-                 'Level1_4': 0,
-                 'Level1_5': 0,
-                 'Drone': 5,
-                 'Player1': 0,
-                 'PlayerShot': 0,
-                 'EnemyShot': 0}
+                'Level1_2': 0,
+                'Level1_3': 0,
+                'Level1_4': 0,
+                'Level1_5': 0,
+                'Drone': 5,
+                'Player1': 0,
+                'PlayerShot': 0,
+                'EnemyShot': 0}
 
 ENTITY_SPEED = {'Level1_1': 0,
                 'Level1_2': 1,
@@ -47,9 +48,9 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
 BLUE = (0, 0, 255)
-GREEN = (0,255,0)
-SILVER = (192,192,192)
-ORANGE = (255,148,0)
+GREEN = (0, 255, 0)
+SILVER = (192, 192, 192)
+ORANGE = (255, 148, 0)
 
 # FONT
 FONT_PATH = './font/FutureMillennium.ttf'
@@ -76,3 +77,16 @@ SPAWN_TIMER = 2000
 # WINDOW
 LARGURA = 800
 ALTURA = 600
+
+# SCORE POS
+SCORE_POS = {0: (LARGURA / 2, 210),
+             1: (LARGURA / 2, 240),
+             2: (LARGURA / 2, 270),
+             3: (LARGURA / 2, 300),
+             4: (LARGURA / 2, 330),
+             5: (LARGURA / 2, 360),
+             6: (LARGURA / 2, 390),
+             7: (LARGURA / 2, 420),
+             8: (LARGURA / 2, 450),
+             9: (LARGURA / 2, 480)
+             }

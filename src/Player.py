@@ -4,14 +4,15 @@ from src.Entity import Entity
 from src.PlayerShot import PlayerShot
 
 class Player(Entity):
-    def __init__(self):
+    def __init__(self, name: str):
         pygame.sprite.Sprite.__init__(self)
-        self.name = 'Player'
+        self.name = name
         self.images_player_run = []
         self.images_player_jump = []
         self.pulo = False
         self.pos_y_inicial = ALTURA - 70 - 90 // 2
-        self.sprite_sheet = pygame.image.load('./chars/player1/Player2.png').convert_alpha()
+        self.pos_y_inicial2 = 100
+        self.sprite_sheet = pygame.image.load(f'./chars/player1/{self.name}.png').convert_alpha()
 
         for c in range(2, 9):
             img = self.sprite_sheet.subsurface((72 * c, 0), (72, 72))
@@ -29,13 +30,16 @@ class Player(Entity):
         self.frames = 0
         self.max_frames = 1
         self.surf = self.image
-        self.health = 5
+        self.health = 2
         self.damage = 1
         self.score = 0
 
     def update(self):
         if self.pulo:
             self.rect.y -= 21
+            # if self.name == 'Player1': # Tentando implementar dois jogadores
+            #     if self.rect.y <= 0:
+            #         self.pulo = False
             if self.rect.y <= 320:
                 self.pulo = False
         else:

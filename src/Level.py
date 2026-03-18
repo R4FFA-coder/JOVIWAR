@@ -16,10 +16,15 @@ class Level:
         self.name = name
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity(self.name))
-        self.player = Player()
+        self.player = Player('Player1')
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIMER)
         self.entity_list.append(EntityFactory.get_entity('Enemy'))
         self.entity_list.append(self.player)
+        # if self.name == 'Dual_player':           em uma proxima versao colocarei um modo com dois jogadores
+        #     self.player2 = Player2()
+        #     self.entity_list.append(self.player2)
+        # else:
+        #     pass
 
     def run(self, ):
         pygame.mixer_music.load(BGML2)
@@ -57,7 +62,7 @@ class Level:
             if self.name == 'Level_infinite':
                 pass
             else:
-                self.text_level2(ORANGE,f'player health: {self.player.health}', 20, (100, 60))
+                self.text_level2(ORANGE, f'player health: {self.player.health}', 20, (100, 60))
 
             pygame.display.flip()
 
@@ -88,7 +93,7 @@ class Level:
                 else:
                     print('VOCE MORREU')
                     print(f'Pontuação Final ->  {self.player.score} Pontos')
-                    break
+                    return self.player.score
 
             # verificar colisoes e a vida
             EntityMediator.verify_collision(entity_list=self.entity_list)
@@ -101,7 +106,7 @@ class Level:
             center=text_center_pos)  # Desenha um retangulo que será a área em que o texto ocupará
         self.window.blit(source=text_surf, dest=text_rect)  # carrega o texto e imprime na area do retangulo
 
-    def text_level2(self,color,  text: str, size: int, text_center_pos: tuple):
+    def text_level2(self, color, text: str, size: int, text_center_pos: tuple):
         text_font = pygame.font.Font(FONT_PATH_BOLD, size=size)
         text_surf = text_font.render(text, True, color).convert_alpha()
         text_rect = text_surf.get_rect(center=text_center_pos)
