@@ -24,9 +24,9 @@ class Menu:
         while True:
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_texto(30, MENU_OPTION[i], ORANGE, (255 - i * 19, 300 + 40 * i))
+                    self.menu_texto(30, MENU_OPTION[i], ORANGE, (255 - i * 19, 300 + 40 * i), GRAY)
                 else:
-                    self.menu_texto(30, MENU_OPTION[i], BLUE, (255 - i * 19, 300 + 40 * i), WHITE)
+                    self.menu_texto(30, MENU_OPTION[i], BLUE, (255 - i * 19, 300 + 40 * i), SILVER)
             pygame.display.flip()
 
             for event in pygame.event.get():

@@ -11,12 +11,13 @@ class DBProxy:
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
                             nome TEXT NOT NULL,
                             score INTEGER NOT NULL,
+                            tempo INTEGER NOT NULL,
                             data TEXT NOT NULL)
                         '''
                          )
 
     def save(self, score_dict: dict):
-        self.cur.execute('INSERT INTO dados (nome, score, data) VALUES (:name, :score, :data)', score_dict)
+        self.cur.execute('INSERT INTO dados (nome, score, tempo, data) VALUES (:name, :score, :tempo, :data)', score_dict)
         self.con.commit()
 
     def retrieve_top10(self) -> list:

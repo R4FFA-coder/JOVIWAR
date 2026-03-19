@@ -1,4 +1,6 @@
 # Parametros padrao
+from random import randint
+
 import pygame
 
 # ENTITY_CONFIG
@@ -19,8 +21,8 @@ ENTITY_HEALTH = {'Level1_1': 999,
                  'Level1_3': 999,
                  'Level1_4': 999,
                  'Level1_5': 999,
-                 'Player1': 2,
-                 'Drone': 7,
+                 'Player1': 6,
+                 'Drone': 11,
                  'PlayerShot': 1,
                  'EnemyShot': 1}
 
@@ -51,6 +53,9 @@ BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
 SILVER = (192, 192, 192)
 ORANGE = (255, 148, 0)
+GRAY = (50, 50, 50)
+RED = (255, 0, 0)
+GREEN2 = (55,220,55)
 
 # FONT
 FONT_PATH = './font/FutureMillennium.ttf'
@@ -59,9 +64,9 @@ FONT_PATH_BOLD = './font/FutureMillennium Black.ttf'
 
 # MENU OPTION
 MENU_OPTION = ('JOGAR            ',
-               ' MODO LIVRE',
-               'RANKING',
-               'SAIR  ')
+               'MODO LIVRE',
+               'RANKING ',
+               'SAIR   ')
 
 # PATHS
 BGD = './assets/MenuBG.jpg'
@@ -72,7 +77,7 @@ SCORE = './assets/Score.wav'
 SHOOT = './assets/Shoot.wav'
 
 # SPAWN TIMER
-SPAWN_TIMER = 2000
+SPAWN_TIMER = 2500
 
 # WINDOW
 LARGURA = 800
@@ -80,13 +85,13 @@ ALTURA = 600
 
 # SCORE POS
 SCORE_POS = {0: (LARGURA / 2, 210),
-             1: (LARGURA / 2, 240),
-             2: (LARGURA / 2, 270),
-             3: (LARGURA / 2, 300),
-             4: (LARGURA / 2, 330),
-             5: (LARGURA / 2, 360),
-             6: (LARGURA / 2, 390),
-             7: (LARGURA / 2, 420),
-             8: (LARGURA / 2, 450),
-             9: (LARGURA / 2, 480)
+             1: (LARGURA / 2, 250),
+             2: (LARGURA / 2, 290),
+             3: (LARGURA / 2, 330),
+             4: (LARGURA / 2, 370),
+             5: (LARGURA / 2, 410),
+             6: (LARGURA / 2, 450),
+             7: (LARGURA / 2, 490),
+             8: (LARGURA / 2, 530),
+             9: (LARGURA / 2, 570)
              }

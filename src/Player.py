@@ -1,5 +1,5 @@
 import pygame
-from src.Const import ALTURA
+from src.Const import ALTURA, ENTITY_HEALTH
 from src.Entity import Entity
 from src.PlayerShot import PlayerShot
 
@@ -11,7 +11,7 @@ class Player(Entity):
         self.images_player_jump = []
         self.pulo = False
         self.pos_y_inicial = ALTURA - 70 - 90 // 2
-        self.pos_y_inicial2 = 100
+        # self.pos_y_inicial2 = 100 para player 2
         self.sprite_sheet = pygame.image.load(f'./chars/player1/{self.name}.png').convert_alpha()
 
         for c in range(2, 9):
@@ -30,17 +30,17 @@ class Player(Entity):
         self.frames = 0
         self.max_frames = 1
         self.surf = self.image
-        self.health = 2
+        self.health = ENTITY_HEALTH[self.name]
         self.damage = 1
         self.score = 0
 
     def update(self):
         if self.pulo:
-            self.rect.y -= 21
+            self.rect.y -= 24
             # if self.name == 'Player1': # Tentando implementar dois jogadores
             #     if self.rect.y <= 0:
             #         self.pulo = False
-            if self.rect.y <= 320:
+            if self.rect.y <= 344:
                 self.pulo = False
         else:
             if self.rect.y < self.pos_y_inicial:

@@ -6,7 +6,7 @@ from src.Entity import Entity
 class Enemy(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
-        self.shot_delay = 100
+        self.shot_delay = 75
 
     def move(self, ):
         self.rect.centerx -= ENTITY_SPEED[self.name]
@@ -16,5 +16,5 @@ class Enemy(Entity):
     def atirar(self):
         self.shot_delay -= 1
         if self.shot_delay <= 0:
-            self.shot_delay = randint(200,300)
+            self.shot_delay = randint(75,300)
             return EnemyShot('EnemyShot', (self.rect.centerx, self.rect.centery - 5))

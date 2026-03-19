@@ -11,31 +11,29 @@ class Score:
         self.surf = pygame.image.load('./assets/Scorebg.jpg').convert_alpha()
         self.rect = self.surf.get_rect()
 
-    def salvar(self, score):
+    def salvar(self, score, tempo):
         name = ''
         if score > 0:
-            name_text = 'DIGITE SEU NOME (minimo 3 caracteres)'
-            pygame.mixer_music.load(BGML1)
-            pygame.mixer_music.play(-1)
-            pygame.mixer_music.set_volume(0.4)
+            pygame.mixer_music.stop()
+            name_text = 'DIGITE SEU NOME (5 a 7 caracteres)'
             self.window.blit(self.surf, self.rect)
             db_proxy = DBProxy('DBScore')
             while True:
-                self.score_text('FIM DE JOGO!', 55, (LARGURA // 2, 100), YELLOW, FONT_PATH_BOLD)
-                self.score_text(name_text, 25, (LARGURA // 2, ALTURA // 2 - 70), WHITE, FONT_PATH)
+                self.score_text('FIM DE JOGO!', 75, (LARGURA // 2, 120), RED, FONT_PATH_BOLD)
+                self.score_text(name_text, 28, (LARGURA // 2, ALTURA // 2 - 70), YELLOW, FONT_PATH)
 
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         pygame.quit()
                         exit()
                     elif event.type == KEYDOWN:
-                        if event.key == K_RETURN and len(name) > 2:
-                            db_proxy.save({'name': name, 'score': score, 'data': get_formatted_date()})
+                        if event.key == K_RETURN and len(name) >= 5:
+                            db_proxy.save({'name': name, 'score': score, 'tempo': tempo, 'data': get_formatted_date()})
                             self.show()
                         elif event.key == K_BACKSPACE:
                             name = name[:-1]
                         else:
-                            if len(name) < 8:
+                            if len(name) < 7:
                                 if event.key == K_RETURN:
                                     continue
                                 name += event.unicode
@@ -48,15 +46,15 @@ class Score:
         pygame.mixer_music.play(-1)
         pygame.mixer_music.set_volume(0.4)
         self.window.blit(self.surf, self.rect)
-        self.score_text('TOP 10 RANK', 75, (LARGURA //2, 70), GREEN, FONT_PATH)
-        self.score_text('NOME   PONTOS      DATA       ', 30, (LARGURA //2, 150), YELLOW, FONT_PATH_ITALLIC)
+        self.score_text('TOP 10 RANK', 75, (LARGURA //2, 70), ORANGE, FONT_PATH)
+        self.score_text('NOME     PONTOS   TEMPO      DATA              ', 32, (LARGURA //2, 153), WHITE, FONT_PATH_ITALLIC)
         db_proxy = DBProxy('DBScore')
         list_score = db_proxy.retrieve_top10()
         db_proxy.close()
 
         for i in list_score:
-            id_, nome, pontos, data = i
-            self.score_text(f'{nome}    {pontos :05d}    {data}', 25, (SCORE_POS[list_score.index(i)]), GREEN, FONT_PATH, (12,12,12))
+            id_, nome, pontos, tempo, data = i
+            self.score_text(f'{nome}    {pontos :05d}    {tempo}    {data}', 35, (SCORE_POS[list_score.index(i)]), GREEN2, FONT_PATH, (12,12,12))
         while True:
 
             for event in pygame.event.get():

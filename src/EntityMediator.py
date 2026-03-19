@@ -6,6 +6,7 @@ from src.Entity import Entity
 from src.Player import Player
 from src.PlayerShot import PlayerShot
 
+
 class EntityMediator:
 
     @staticmethod
@@ -13,18 +14,14 @@ class EntityMediator:
         valid_collision = False
         if isinstance(ent1, Enemy) and isinstance(ent2, PlayerShot):
             valid_collision = True
-        if isinstance(ent1, PlayerShot) and isinstance(ent2, Enemy):
-            valid_collision = True
         if isinstance(ent1, Player) and isinstance(ent2, EnemyShot):
-            valid_collision = True
-        if isinstance(ent1, EnemyShot) and isinstance(ent2, Player):
             valid_collision = True
 
         if valid_collision:
-            if (ent1.rect.right >= ent2.rect.left and
-                ent1.rect.left <= ent2.rect.right and
-                ent1.rect.bottom >= ent2.rect.top and
-                ent1.rect.top <= ent2.rect.bottom):
+            if (ent1.rect.right > ent2.rect.left + 20 and
+                ent1.rect.left + 40 < ent2.rect.right and
+                ent1.rect.bottom > ent2.rect.top and
+                ent1.rect.top < ent2.rect.bottom):
                 ent1.health -= ent2.damage
                 ent2.health -= ent1.damage
                 ent1.last_dmg = ent2.name
@@ -41,18 +38,19 @@ class EntityMediator:
         if isinstance(ent, EnemyShot):
             if ent.rect.right < 0:
                 ent.health = 0
+
     @staticmethod
     def __give_score(enemy: Enemy, entity_list: list[Entity]):
+
         if enemy.last_dmg == 'PlayerShot':
             for ent in entity_list:
                 if ent.name == 'Player1':
                     ent.score += enemy.score
                     pygame.mixer.Sound(SCORE).play().set_volume(0.3)
                     num = 25
-                    if ent.score == num : # Condição para implementar uma vida adicional ao matar 5 enemies
-                        ent.health += 1   # Apenas para balançear a dificuldade
+                    if ent.score == num:  # Condição para implementar uma vida adicional ao matar 5 enemies
+                        ent.health += 1  # Apenas para balançear a dificuldade
                         num += 25
-
 
     @staticmethod
     def verify_collision(entity_list: list[Entity]):

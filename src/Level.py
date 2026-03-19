@@ -27,13 +27,14 @@ class Level:
         #     pass
 
     def run(self, ):
+        dev_mode = False
         pygame.mixer_music.load(BGML2)
         pygame.mixer_music.play(-1, fade_ms=1500)
         pygame.mixer_music.set_volume(0.45)
         clock = pygame.time.Clock()
-        countdown_timer = pygame.USEREVENT + 1
-        countdown = 120
-        pygame.time.set_timer(countdown_timer, 1000)
+        contador = pygame.USEREVENT + 1
+        cronometro = 0
+        pygame.time.set_timer(contador, 1000)
         todas_as_sprites = pygame.sprite.Group()
 
         for i in range(LARGURA // 100 + 2):
@@ -55,26 +56,30 @@ class Level:
             todas_as_sprites.draw(self.window)
             todas_as_sprites.update()
 
-            self.text_level(f'Timeout= {countdown}', 20, (100, 30))
-            self.text_level(f'Entitys = {len(self.entity_list)}', 20, (LARGURA // 2, 30))
-            self.text_level(f'FPS: {clock.get_fps():.0f}', 12, (LARGURA - 100, 20))
-            self.text_level(f'SCORE: {self.player.score}', 20, (LARGURA - 100, 40))
+            self.text_level(f'Tempo= {cronometro}', 20, (100, 30))
+            if dev_mode:
+                self.text_level(f'Entidades = {len(self.entity_list)}', 20, (LARGURA // 2, 30))
+                self.text_level(f'FPS: {clock.get_fps():.0f}', 19, (LARGURA - 220, 30))
+            self.text_level(f'PONTOS: {self.player.score}', 20, (LARGURA - 100, 30))
             if self.name == 'Level_infinite':
                 pass
             else:
-                self.text_level2(ORANGE, f'player health: {self.player.health}', 20, (100, 60))
+                self.text_level2(ORANGE, f'Vida: {self.player.health}', 20, (100, 60))
 
             pygame.display.flip()
 
             for event in pygame.event.get():
                 if event.type == EVENT_ENEMY:
                     self.entity_list.append(EntityFactory.get_entity('Enemy'))
+
                 if event.type == QUIT:
                     pygame.quit()
                     exit()
-                elif event.type == countdown_timer:
-                    countdown -= 1
+                elif event.type == contador:
+                    cronometro += 1
                 if event.type == KEYDOWN:
+                    if event.key == K_F1:
+                        dev_mode = not dev_mode
                     if event.key == K_ESCAPE:
                         menu = Menu(self.window)
                         menu.run()
@@ -93,7 +98,7 @@ class Level:
                 else:
                     print('VOCE MORREU')
                     print(f'Pontuação Final ->  {self.player.score} Pontos')
-                    return self.player.score
+                    return [self.player.score, cronometro]
 
             # verificar colisoes e a vida
             EntityMediator.verify_collision(entity_list=self.entity_list)

@@ -19,7 +19,7 @@ class Game:
             if menu_return in [MENU_OPTION[0]]:
                 level = Level(self.window, 'Level1')
                 level_return = level.run()
-                score.salvar(level_return)
+                score.salvar(level_return[0], level_return[1])
                 print(level_return)
             if menu_return in [MENU_OPTION[1]]:
                 level_infinito = Level(self.window, 'Level_infinite')
