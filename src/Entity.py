@@ -2,8 +2,13 @@ from abc import ABC, abstractmethod
 import pygame.image
 from src.Const import ENTITY_HEALTH, ENTITY_DAMAGE, ENTITY_SCORE
 
-
 class Entity(ABC, pygame.sprite.Sprite):
+    """
+    explico melhor no metodo give_score entmediator
+    basicamente, passei por problemas durante o desenvolvimento
+    do jogo, e adicionando o pygame.Sprite como classe pai, resolvi
+    dois problemas com uma simples solução
+    """
     def __init__(self, name: str, position: tuple):
         pygame.sprite.Sprite.__init__(self)
         self.name = name

@@ -16,5 +16,5 @@ class Enemy(Entity):
     def atirar(self):
         self.shot_delay -= 1
         if self.shot_delay <= 0:
-            self.shot_delay = randint(75,300)
+            self.shot_delay = randint(75,300) # tempo aleatorio para o inimigo dar o tiro
             return EnemyShot('EnemyShot', (self.rect.centerx, self.rect.centery - 5))

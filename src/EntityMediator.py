@@ -6,7 +6,6 @@ from src.Entity import Entity
 from src.Player import Player
 from src.PlayerShot import PlayerShot
 
-
 class EntityMediator:
 
     @staticmethod
@@ -41,16 +40,21 @@ class EntityMediator:
 
     @staticmethod
     def __give_score(enemy: Enemy, entity_list: list[Entity]):
+        """
+        Metodo que adicionará os pontos para o jogador principal.
+        Testando o jogo, vi que para manter o jogo divertido, tive que
+        aumentar a taxa de tiros um pouco e spawn. Para balançear, adicionei
+        uma condicao que a cada 25 pontos o jogador irá receber uma vida
+        adicional.
 
+        """
         if enemy.last_dmg == 'PlayerShot':
             for ent in entity_list:
                 if ent.name == 'Player1':
                     ent.score += enemy.score
-                    pygame.mixer.Sound(SCORE).play().set_volume(0.3)
-                    num = 25
-                    if ent.score == num:  # Condição para implementar uma vida adicional ao matar 5 enemies
-                        ent.health += 1  # Apenas para balançear a dificuldade
-                        num += 25
+                    pygame.mixer.Sound(SCORE).play().set_volume(0.2)
+                    if ent.score % 25 == 0 and ent.health <= 6 and ent.score > 24: # Condição para implementar uma vida adicional ao matar 5 enemies
+                        ent.health += 1
 
     @staticmethod
     def verify_collision(entity_list: list[Entity]):

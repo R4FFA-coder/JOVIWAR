@@ -9,7 +9,6 @@ from src.Menu import Menu
 from src.Platform import Platform
 from src.Player import Player
 
-
 class Level:
     def __init__(self, window, name):
         self.window = window
@@ -27,7 +26,8 @@ class Level:
         #     pass
 
     def run(self, ):
-        dev_mode = False
+        ''' aperte f1 para ativar informacoes ocultas'''
+        dev_mode = False # Apenas uma opção para mostrar o número de entidade e fps
         pygame.mixer_music.load(BGML2)
         pygame.mixer_music.play(-1, fade_ms=1500)
         pygame.mixer_music.set_volume(0.45)
@@ -104,15 +104,15 @@ class Level:
             EntityMediator.verify_collision(entity_list=self.entity_list)
             EntityMediator.verify_health(entity_list=self.entity_list)
 
-    def text_level(self, text: str, size: int, text_center_pos: tuple):
+    def text_level(self, text: str, size: int, position: tuple):
         text_font = pygame.font.Font(FONT_PATH_ITALLIC, size=size)  # padroniza uma fonte e o tamanho
         text_surf = text_font.render(text, True, WHITE).convert_alpha()  # Renderiza o texto
         text_rect = text_surf.get_rect(
-            center=text_center_pos)  # Desenha um retangulo que será a área em que o texto ocupará
+            center=position)  # Desenha um retangulo que será a área em que o texto ocupará
         self.window.blit(source=text_surf, dest=text_rect)  # carrega o texto e imprime na area do retangulo
 
-    def text_level2(self, color, text: str, size: int, text_center_pos: tuple):
+    def text_level2(self, color, text: str, size: int, position: tuple):
         text_font = pygame.font.Font(FONT_PATH_BOLD, size=size)
         text_surf = text_font.render(text, True, color).convert_alpha()
-        text_rect = text_surf.get_rect(center=text_center_pos)
+        text_rect = text_surf.get_rect(center=position)
         self.window.blit(source=text_surf, dest=text_rect)

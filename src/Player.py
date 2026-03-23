@@ -4,6 +4,16 @@ from src.Entity import Entity
 from src.PlayerShot import PlayerShot
 
 class Player(Entity):
+
+    """
+        Classe player com metodo herdado do pygame.Sprite,
+        assim foi possivel colocar sprites animados no player
+        com o metodo update fazendo a "animacao".
+        com uma pesquisa com IA aprendi a trabalhar com multiHerança no codigo,
+        a classe Entity herda da classe abstrata ABC e tambem da classe pygame.Sprites.
+        esse foi meu raciocinio para conseguir usar sprites sem comprometer o resto do codigo do jogo
+    """
+
     def __init__(self, name: str):
         pygame.sprite.Sprite.__init__(self)
         self.name = name
@@ -37,7 +47,7 @@ class Player(Entity):
     def update(self):
         if self.pulo:
             self.rect.y -= 24
-            # if self.name == 'Player1': # Tentando implementar dois jogadores
+            # if self.name == 'Player1': # no futuro. Tentarei Implementar dois jogadores
             #     if self.rect.y <= 0:
             #         self.pulo = False
             if self.rect.y <= 344:

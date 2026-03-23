@@ -4,12 +4,12 @@ from src.Menu import Menu
 from sys import exit
 from src.Score import Score
 
-
 class Game:
     def __init__(self):
         pygame.init()
         self.window = pygame.display.set_mode(size=(LARGURA, ALTURA))
     def run(self):
+        ''' aperte f1 durante o jogo para mostrar informações ocultas'''
         relogio = pygame.time.Clock()
         while True:
             relogio.tick(30)

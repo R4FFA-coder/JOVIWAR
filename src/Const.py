@@ -1,6 +1,4 @@
 # Parametros padrao
-from random import randint
-
 import pygame
 
 # ENTITY_CONFIG

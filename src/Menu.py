@@ -2,7 +2,6 @@ from sys import *
 from pygame.locals import *
 from src.Const import *
 
-
 class Menu:
     def __init__(self, window):
         self.window = window
@@ -18,7 +17,7 @@ class Menu:
         self.menu_texto(80, 'JOVI', WHITE, (LARGURA // 2 - 30, 127))
         self.menu_texto(55, 'WAR', BLUE, (LARGURA // 2 + 60, 179))
         self.instrucoes(20, (LARGURA - 200, 450))
-        self.menu_texto(15, 'JOGO CRIADO POR RAFAEL REIS!     versão: 0.10', WHITE, (LARGURA - 250, ALTURA - 17),
+        self.menu_texto(15, 'JOGO CRIADO POR RAFAEL REIS      versão: 0.10', WHITE, (LARGURA - 250, ALTURA - 17),
                         BLACK)
 
         while True:
@@ -60,13 +59,13 @@ class Menu:
             center=text_center_pos)  # Desenha um retangulo que será a área em que o texto ocupará
         self.window.blit(source=text_surf, dest=text_rect)  # carrega o texto e imprime na area do retangulo
 
-    def instrucoes(self, text_size: int, text_center_pos: tuple):
+    def instrucoes(self, text_size: int, position: tuple):
         text_font = pygame.font.Font(FONT_PATH_ITALLIC, size=text_size)
         text_surf = text_font.render('(SPACE) - pular', True, YELLOW).convert_alpha()
-        text_rect = text_surf.get_rect(center=text_center_pos)
+        text_rect = text_surf.get_rect(center=position)
         self.window.blit(source=text_surf, dest=text_rect)
 
-        text_center_pos = (LARGURA - 203, 470)
+        position = (LARGURA - 203, 470)
         text_surf2 = text_font.render('(CTRL) - Atirar', True, YELLOW).convert_alpha()
-        text_rect2 = text_surf2.get_rect(center=text_center_pos)
+        text_rect2 = text_surf2.get_rect(center=position)
         self.window.blit(source=text_surf2, dest=text_rect2)
